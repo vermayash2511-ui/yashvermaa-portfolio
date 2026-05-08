@@ -1,148 +1,131 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import AppImage from '@/components/ui/AppImage';
-import Icon from '@/components/ui/AppIcon';
 
-const stats = [
-{ value: '3+', label: 'Years Designing' },
-{ value: '40+', label: 'Projects Delivered' },
-{ value: 'BFA', label: 'Applied Arts' }];
-
+const services = [
+  { num: '#01', name: 'Brand Identity' },
+  { num: '#02', name: 'Packaging Design' },
+  { num: '#03', name: 'Editorial Design' },
+  { num: '#04', name: 'Art Direction' },
+];
 
 export default function HeroSection() {
-  const headlineRef = useRef<HTMLDivElement>(null);
+  const headlineRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    const words = headlineRef?.current?.querySelectorAll<HTMLSpanElement>('.hero-word');
-    if (!words) return;
-    words?.forEach((word, i) => {
-      setTimeout(() => {
-        word.style.animation = 'word-appear 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards';
-      }, 200 + i * 120);
-    });
+    const el = headlineRef.current;
+    if (!el) return;
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    setTimeout(() => {
+      el.style.transition = 'opacity 1s ease, transform 1s ease';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }, 200);
   }, []);
-
-  const scrollToWork = () => {
-    document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-end overflow-hidden noise-overlay">
-      
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <AppImage
-          src="https://img.rocket.new/generatedImages/rocket_gen_img_148090e41-1772420226753.png"
-          alt="Dark artistic workspace with scattered design tools, warm moody studio lighting, deep shadows, black desk surface with paint and brushes"
-          fill
-          priority
-          className="object-cover hero-pan"
-          sizes="100vw" />
-        
-        {/* Multi-layer scrim for text legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        background: 'radial-gradient(ellipse 110% 110% at 60% 35%, #e8000a 0%, #9b0000 40%, #2a0000 75%, #080000 100%)',
+      }}
+    >
+      {/* ── Person photo ── */}
+      <div className="absolute inset-0 flex items-end justify-center z-[5]">
+        <img
+          src="/assets/images/yash_hero.jpg"
+          alt="Yash Verma"
+          className="h-full w-auto object-contain object-bottom"
+          style={{ maxWidth: '60%', mixBlendMode: 'multiply', filter: 'contrast(1.05) brightness(0.88)' }}
+        />
       </div>
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 pb-20 pt-36">
-        <div className="max-w-4xl">
-          {/* Eyebrow */}
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/15 bg-white/5 backdrop-blur-sm mb-10"
-            style={{ animation: 'word-appear 0.8s 0.1s cubic-bezier(0.22, 1, 0.36, 1) forwards', opacity: 0 }}>
-            
-            <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-            <span className="text-xs uppercase tracking-[0.35em] text-white/80 font-medium">
-              BFA Applied Arts · Graphic Designer
-            </span>
+
+      {/* Blend gradients */}
+      <div className="absolute inset-0 z-[6] pointer-events-none"
+        style={{ background: 'linear-gradient(to right, rgba(140,0,5,0.75) 0%, transparent 28%)' }} />
+      <div className="absolute inset-0 z-[6] pointer-events-none"
+        style={{ background: 'linear-gradient(to left, rgba(90,0,0,0.65) 0%, transparent 32%)' }} />
+      <div className="absolute inset-0 z-[6] pointer-events-none"
+        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.7) 0%, transparent 35%)' }} />
+
+      {/* ── NAV ── */}
+      <nav className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-8 py-5">
+        <div className="flex items-center gap-3">
+          <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
+            <img src="/assets/images/logo.png" alt="Logo" className="w-full h-full object-cover rounded-full" />
           </div>
-
-          {/* Main Headline */}
-          <div ref={headlineRef} className="mb-8">
-            <h1 className="font-display text-[clamp(3.5rem,9vw,8rem)] font-900 leading-[0.92] tracking-tight text-white">
-              {['Crafting', 'Bold', 'Visual']?.map((w, i) =>
-              <span
-                key={i}
-                className="hero-word inline-block mr-[0.15em]"
-                style={{ opacity: 0 }}>
-                
-                  {w}
-                </span>
-              )}
-              <br />
-              {['Stories', 'That']?.map((w, i) =>
-              <span
-                key={i}
-                className="hero-word inline-block mr-[0.15em]"
-                style={{ opacity: 0 }}>
-                
-                  {w}
-                </span>
-              )}
-              <span
-                className="hero-word inline-block text-gradient-coral"
-                style={{ opacity: 0 }}>
-                
-                Resonate.
-              </span>
-            </h1>
-          </div>
-
-          {/* Sub */}
-          <p
-            className="text-lg md:text-xl text-white/70 max-w-xl leading-relaxed mb-12 font-light"
-            style={{ animation: 'word-appear 0.9s 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards', opacity: 0 }}>
-            
-            I&apos;m Yash Verma — a graphic designer and applied arts student turning concepts
-            into expressive, purposeful visuals.
-          </p>
-
-          {/* CTAs */}
-          <div
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-20"
-            style={{ animation: 'word-appear 0.9s 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards', opacity: 0 }}>
-            
+          <span className="text-white font-bold text-sm">Yash Verma</span>
+        </div>
+        <div className="hidden md:flex items-center gap-6">
+          {['Work', 'About', 'Contact'].map((l) => (
             <button
-              onClick={scrollToWork}
-              className="group flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground rounded-full font-semibold text-base hover:bg-primary/90 transition-all duration-300 magnetic-btn shadow-lg shadow-primary/25">
-              
-              View My Work
-              <Icon name="ArrowRightIcon" size={18} variant="outline" className="group-hover:translate-x-1 transition-transform" />
+              key={l}
+              onClick={() => document.querySelector(`#${l.toLowerCase()}`)?.scrollIntoView({ behavior: 'smooth' })}
+              className="text-white/60 hover:text-white text-sm transition-colors"
+            >
+              {l}
             </button>
-            <button
-              onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="flex items-center gap-3 px-8 py-4 border border-white/25 text-white rounded-full font-semibold text-base hover:bg-white/10 transition-all duration-300">
-              
-              Get in Touch
-            </button>
-          </div>
+          ))}
+        </div>
+        <button
+          onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+          className="flex items-center gap-2 bg-white text-[#c0000a] font-bold text-xs px-5 py-2.5 rounded-full hover:bg-white/90 transition-all"
+        >
+          Hire Me ↗
+        </button>
+      </nav>
 
-          {/* Stats */}
-          <div
-            className="flex items-center gap-10 border-t border-white/10 pt-10"
-            style={{ animation: 'word-appear 0.9s 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards', opacity: 0 }}>
-            
-            {stats?.map((s, i) =>
-            <div key={i} className="flex flex-col gap-1">
-                <span className="font-display text-3xl font-bold text-white">{s?.value}</span>
-                <span className="text-xs uppercase tracking-widest text-white/50">{s?.label}</span>
-              </div>
-            )}
-          </div>
+      {/* ── LEFT headline ── */}
+      <div className="absolute left-8 top-1/2 -translate-y-1/2 z-20">
+        <p className="text-white/50 text-xs mb-3 tracking-wide">Hey, I&apos;m a</p>
+        <h1
+          ref={headlineRef}
+          className="font-display font-black text-white leading-[0.87]"
+          style={{ fontSize: 'clamp(52px, 8vw, 90px)', letterSpacing: '-3px', textShadow: '0 2px 40px rgba(0,0,0,0.4)' }}
+        >
+          Graphic<br />Designer.
+        </h1>
+      </div>
+
+      {/* ── RIGHT tagline ── */}
+      <div className="absolute right-8 top-1/2 z-20 max-w-[200px]"
+        style={{ transform: 'translateY(-20%)' }}>
+        <p className="text-white font-bold text-sm leading-snug mb-2">
+          Bold design should feel unforgettable.
+        </p>
+        <p className="text-white/50 text-xs leading-relaxed">
+          From brand identity to editorial — crafting visuals that connect and resonate.
+        </p>
+        <div className="flex flex-col gap-4 mt-6">
+          <button
+            onClick={() => document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-white text-[#c0000a] font-bold text-xs px-5 py-2.5 rounded-full hover:bg-white/90 transition-all w-fit"
+          >
+            View My Work →
+          </button>
+          <button
+            onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border border-white/30 text-white text-xs px-5 py-2.5 rounded-full hover:bg-white/10 transition-all w-fit"
+          >
+            Get in Touch
+          </button>
         </div>
       </div>
-      {/* Scroll indicator */}
-      <div className="absolute bottom-10 right-10 z-10 hidden md:flex flex-col items-center gap-3">
-        <span className="text-[10px] uppercase tracking-[0.3em] text-white/40 writing-mode-vertical"
-        style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
-          Scroll
-        </span>
-        <div className="w-px h-16 bg-gradient-to-b from-white/40 to-transparent relative overflow-hidden">
-          <div className="w-full h-6 bg-primary scroll-indicator-dot absolute top-0" />
-        </div>
-      </div>
-    </section>);
 
+      {/* ── SERVICES bottom bar ── */}
+      <div className="absolute bottom-0 left-0 right-0 z-20 flex border-t border-white/10"
+        style={{ background: 'rgba(0,0,0,0.2)', backdropFilter: 'blur(6px)' }}>
+        {services.map((s, i) => (
+          <div
+            key={i}
+            className="flex-1 px-6 py-4 flex flex-col gap-1 border-r border-white/8 last:border-r-0"
+          >
+            <span className="text-[10px] font-bold text-red-400">{s.num}</span>
+            <span className="text-[11px] text-white/40">{s.name}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
