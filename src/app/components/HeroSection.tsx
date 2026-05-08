@@ -4,18 +4,19 @@ import React, { useEffect, useRef } from 'react';
 export default function HeroSection() {
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    [leftRef, rightRef].forEach((ref, i) => {
+    [leftRef, rightRef, statsRef].forEach((ref, i) => {
       const el = ref.current;
       if (!el) return;
       el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
+      el.style.transform = 'translateY(28px)';
       setTimeout(() => {
         el.style.transition = 'opacity 1s ease, transform 1s ease';
         el.style.opacity = '1';
         el.style.transform = 'translateY(0)';
-      }, 300 + i * 200);
+      }, 200 + i * 180);
     });
   }, []);
 
@@ -24,82 +25,106 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse 120% 120% at 55% 40%, #e8000a 0%, #9b0000 42%, #2a0000 75%, #080000 100%)',
+        background: 'radial-gradient(ellipse 120% 120% at 55% 35%, #e8000a 0%, #9b0000 42%, #2a0000 75%, #080000 100%)',
       }}
     >
-      {/* ── Person photo — full bleed center ── */}
+      {/* ── Person photo ── */}
       <div className="absolute inset-0 z-[5] flex items-end justify-center">
         <img
           src="/assets/images/yash_hero.jpg"
           alt="Yash Verma"
-          className="h-full w-auto object-contain object-bottom select-none"
+          className="h-[95%] w-auto object-contain object-bottom select-none pointer-events-none"
           style={{
-            maxWidth: '58%',
+            maxWidth: '55%',
             mixBlendMode: 'multiply',
             filter: 'contrast(1.08) brightness(0.85)',
           }}
         />
       </div>
 
-      {/* Side gradients to blend photo edges */}
+      {/* Gradient blends */}
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to right, rgba(130,0,5,0.85) 0%, transparent 30%)' }} />
+        style={{ background: 'linear-gradient(to right, rgba(130,0,5,0.9) 0%, transparent 32%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to left, rgba(80,0,0,0.8) 0%, transparent 32%)' }} />
+        style={{ background: 'linear-gradient(to left, rgba(80,0,0,0.85) 0%, transparent 34%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.6) 0%, transparent 25%)' }} />
+        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.5) 0%, transparent 20%)' }} />
 
-      {/* ── Content layer ── */}
-      <div className="absolute inset-0 z-20 flex flex-col">
-
-        {/* LEFT headline — vertically centered */}
-        <div ref={leftRef} className="absolute left-10 top-1/2 -translate-y-1/2">
-          <p className="text-white/60 font-sans mb-3" style={{ fontSize: '18px', letterSpacing: '0.02em' }}>
+      {/* ── 3-column content grid ── */}
+      <div
+        className="absolute z-20 grid"
+        style={{
+          top: '80px', bottom: 0, left: 0, right: 0,
+          gridTemplateColumns: '1fr 1fr 1fr',
+          gridTemplateRows: '1fr auto',
+          padding: '0 40px 40px',
+        }}
+      >
+        {/* LEFT — headline */}
+        <div
+          ref={leftRef}
+          style={{ gridColumn: '1', gridRow: '1/3', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+        >
+          <p className="text-white/70 font-sans font-medium mb-3" style={{ fontSize: 'clamp(16px, 2vw, 22px)' }}>
             Hey, I&apos;m a
           </p>
           <h1
-            className="font-display font-black text-white leading-[0.88]"
+            className="font-display font-black text-white"
             style={{
-              fontSize: 'clamp(64px, 9vw, 110px)',
-              letterSpacing: '-4px',
-              textShadow: '0 4px 60px rgba(0,0,0,0.3)',
+              fontSize: 'clamp(60px, 8vw, 100px)',
+              lineHeight: 0.88,
+              letterSpacing: '-3px',
+              textShadow: '0 4px 40px rgba(0,0,0,0.3)',
             }}
           >
             Graphic<br />Designer.
           </h1>
         </div>
 
-        {/* RIGHT content — vertically centered */}
-        <div ref={rightRef} className="absolute right-10 top-1/2 -translate-y-1/2" style={{ maxWidth: '240px' }}>
-          <p className="text-white font-bold leading-snug mb-3" style={{ fontSize: '18px' }}>
+        {/* CENTER — empty (photo lives here) */}
+        <div style={{ gridColumn: '2' }} />
+
+        {/* RIGHT — tagline + buttons */}
+        <div
+          ref={rightRef}
+          style={{
+            gridColumn: '3', gridRow: '1',
+            display: 'flex', flexDirection: 'column', justifyContent: 'center',
+            paddingLeft: '16px',
+          }}
+        >
+          <p className="text-white font-bold leading-snug mb-3" style={{ fontSize: 'clamp(15px, 1.6vw, 20px)' }}>
             Bold design should feel unforgettable.
           </p>
-          <p className="text-white/55 leading-relaxed mb-8" style={{ fontSize: '13px' }}>
+          <p className="text-white/55 leading-relaxed mb-6" style={{ fontSize: 'clamp(12px, 1.1vw, 14px)' }}>
             From brand identity to editorial — crafting visuals that connect and resonate with people.
           </p>
           <div className="flex flex-col gap-3">
             <button
               onClick={() => document.querySelector('#work')?.scrollIntoView({ behavior: 'smooth' })}
               className="bg-white text-[#c0000a] font-bold rounded-full hover:bg-white/90 transition-all text-center"
-              style={{ fontSize: '13px', padding: '12px 28px' }}
+              style={{ fontSize: '13px', padding: '13px 26px' }}
             >
               View My Work →
             </button>
             <button
               onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border border-white/35 text-white rounded-full hover:bg-white/10 transition-all text-center"
-              style={{ fontSize: '13px', padding: '12px 28px' }}
+              className="border-2 border-white/40 text-white rounded-full hover:bg-white/10 transition-all text-center"
+              style={{ fontSize: '13px', padding: '13px 26px' }}
             >
               Get in Touch
             </button>
           </div>
         </div>
 
-        {/* BOTTOM stats */}
-        <div className="absolute bottom-10 left-10 flex gap-10">
+        {/* STATS — bottom left only, no overlap */}
+        <div
+          ref={statsRef}
+          style={{ gridColumn: '1', gridRow: '2', display: 'flex', gap: '28px', alignItems: 'flex-end', paddingBottom: '4px' }}
+        >
           {[['3+', 'Years Designing'], ['40+', 'Projects Delivered'], ['BFA', 'Applied Arts']].map(([val, label]) => (
             <div key={val}>
-              <span className="block text-white font-black font-display" style={{ fontSize: '32px', lineHeight: 1 }}>{val}</span>
+              <span className="block font-display font-black text-white" style={{ fontSize: 'clamp(28px, 3.5vw, 40px)', lineHeight: 1 }}>{val}</span>
               <span className="text-white/40 uppercase tracking-widest" style={{ fontSize: '9px' }}>{label}</span>
             </div>
           ))}
