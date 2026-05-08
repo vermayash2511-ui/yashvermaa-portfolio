@@ -5,7 +5,7 @@
 :root {
   --background: #0A0A08;
   --foreground: #F5F0E8;
-  --primary: #E8572A;
+  --primary: #ed1c24;
   --primary-foreground: #FFFFFF;
   --secondary: #1A1A17;
   --secondary-foreground: #F5F0E8;
@@ -17,7 +17,7 @@
   --card-foreground: #F5F0E8;
   --border: #2A2A26;
   --input: #1A1A17;
-  --ring: #E8572A;
+  --ring: #ed1c24;
   --radius: 0.75rem;
   --font-sans: var(--font-dm-sans), sans-serif;
   --font-display: var(--font-fraunces), serif;
@@ -67,7 +67,7 @@
 
 @layer utilities {
   .text-gradient-coral {
-    background: linear-gradient(135deg, #E8572A 0%, #F5C842 60%, #E8572A 100%);
+    background: linear-gradient(135deg, #ed1c24 0%, #ff6b6b 60%, #ed1c24 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -227,7 +227,7 @@
 
 .form-input:focus {
   outline: none;
-  border-color: #E8572A;
+  border-color: #ed1c24;
   box-shadow: 0 0 0 3px rgba(232, 87, 42, 0.15);
   background: #1A1A17;
 }
@@ -258,9 +258,9 @@
 }
 
 .filter-tab.active {
-  background: #E8572A;
+  background: #ed1c24;
   color: #FFFFFF;
-  border-color: #E8572A;
+  border-color: #ed1c24;
 }
 
 /* ── Line draw ── */

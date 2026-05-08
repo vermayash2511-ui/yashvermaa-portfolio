@@ -2,10 +2,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
-const EMAILJS_SERVICE_ID = 'service_64ymtuh';
-const EMAILJS_TEMPLATE_ID = 'template_673lxs9';
-const EMAILJS_PUBLIC_KEY = 'AnMXAKFdab53knCEZ';
-
 const socials = [
   { name: 'Instagram', handle: '@impasto_design', icon: 'GlobeAltIcon', href: 'https://www.instagram.com/impasto_design?igsh=aWRmeHlya2xsajA=' },
   { name: 'Behance', handle: 'yashverma75O099', icon: 'LinkIcon', href: 'https://www.behance.net/yashverma75O099' },
@@ -14,7 +10,7 @@ const socials = [
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
-  const [status, setStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
   const sectionRef = useRef<HTMLElement>(null);
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
@@ -40,35 +36,14 @@ export default function ContactSection() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('sending');
-
-    try {
-      const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          service_id: EMAILJS_SERVICE_ID,
-          template_id: EMAILJS_TEMPLATE_ID,
-          user_id: EMAILJS_PUBLIC_KEY,
-          template_params: {
-            from_name: form.name,
-            from_email: form.email,
-            message: form.message,
-          },
-        }),
-      });
-
-      if (response.ok) {
-        setStatus('sent');
-        setForm({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-      }
-    } catch {
-      setStatus('error');
-    }
+    // Mock submit handler — connect to backend/email service here
+    setTimeout(() => {
+      setStatus('sent');
+      setForm({ name: '', email: '', message: '' });
+    }, 1400);
   };
 
   return (
@@ -157,7 +132,7 @@ export default function ContactSection() {
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Open to freelance projects, internships, and full-time opportunities starting
-                mid-2026.
+                mid-2025.
               </p>
             </div>
           </div>
@@ -182,25 +157,6 @@ export default function ContactSection() {
                   className="text-sm text-primary hover:underline underline-offset-4"
                 >
                   Send another message
-                </button>
-              </div>
-            ) : status === 'error' ? (
-              <div className="flex flex-col items-center justify-center py-20 text-center gap-6">
-                <div className="w-16 h-16 rounded-full bg-red-500/15 flex items-center justify-center">
-                  <Icon name="ExclamationCircleIcon" size={28} variant="outline" className="text-red-500" />
-                </div>
-                <h3 className="font-display text-2xl font-bold text-foreground">Something went wrong</h3>
-                <p className="text-muted-foreground max-w-sm">
-                  Could not send your message. Please try emailing directly at{' '}
-                  <a href="mailto:vermayash2511@gmail.com" className="text-primary hover:underline">
-                    vermayash2511@gmail.com
-                  </a>
-                </p>
-                <button
-                  onClick={() => setStatus('idle')}
-                  className="text-sm text-primary hover:underline underline-offset-4"
-                >
-                  Try again
                 </button>
               </div>
             ) : (
