@@ -2,7 +2,6 @@
 
 import React, { memo, useMemo } from 'react';
 import AppIcon from './AppIcon';
-import AppImage from './AppImage';
 
 interface AppLogoProps {
   src?: string; // Image source (optional)
@@ -29,16 +28,15 @@ const AppLogo = memo(function AppLogo({
 
   return (
     <div className={containerClassName} onClick={onClick}>
-      {/* Show image if src provided, otherwise show icon */}
       {src ? (
-        <AppImage
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
           src={src}
-          alt="Logo" 
+          alt="Logo"
           width={size}
           height={size}
-          className="flex-shrink-0"
-          priority={true}
-          unoptimized={src.endsWith('.svg')}
+          className="flex-shrink-0 object-contain"
+          style={{ width: size, height: size }}
         />
       ) : (
         <AppIcon name={iconName} size={size} className="flex-shrink-0" />
