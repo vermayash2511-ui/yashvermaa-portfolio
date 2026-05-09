@@ -212,7 +212,7 @@ export default function ContactSection() {
                         id="name" name="name" type="text" required
                         value={form.name} onChange={handleChange}
                         placeholder="Your name"
-                        className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
+                        className="w-full px-5 py-4 rounded-xl border border-border bg-white text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
                       />
                     </div>
                     <div className="flex flex-col gap-2">
@@ -221,7 +221,7 @@ export default function ContactSection() {
                         id="email" name="email" type="email" required
                         value={form.email} onChange={handleChange}
                         placeholder="your@email.com"
-                        className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 text-foreground placeholder:text-muted-foreground/50 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
+                        className="w-full px-5 py-4 rounded-xl border border-border bg-white text-gray-900 placeholder:text-gray-400 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
                       />
                     </div>
                   </div>
@@ -232,7 +232,7 @@ export default function ContactSection() {
                       id="message" name="message" required rows={5}
                       value={form.message} onChange={handleChange}
                       placeholder="Tell me about your project, timeline, and budget..."
-                      className="w-full px-5 py-4 rounded-xl border border-border bg-background/50 text-foreground placeholder:text-muted-foreground/50 text-sm resize-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
+                      className="w-full px-5 py-4 rounded-xl border border-border bg-white text-gray-900 placeholder:text-gray-400 text-sm resize-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 transition-all duration-200"
                     />
                   </div>
 
