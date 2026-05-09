@@ -25,30 +25,33 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen overflow-hidden"
       style={{
-        background: 'radial-gradient(ellipse 120% 120% at 55% 35%, #e8000a 0%, #9b0000 42%, #2a0000 75%, #080000 100%)',
+        background: '#8b0000',
       }}
     >
-      {/* ── Person photo ── */}
-      <div className="absolute inset-0 z-[5] flex items-end justify-center">
+      {/* ── Full background photo ── */}
+      <div className="absolute inset-0 z-[5]">
         <img
           src="/assets/images/yash_hero.jpg"
           alt="Yash Verma"
-          className="h-[95%] w-auto object-contain object-bottom select-none pointer-events-none"
+          className="w-full h-full select-none pointer-events-none"
           style={{
-            maxWidth: '55%',
-            mixBlendMode: 'multiply',
-            filter: 'contrast(1.08) brightness(0.85)',
+            objectFit: 'cover',
+            objectPosition: 'center center',
+            filter: 'brightness(0.88) contrast(1.05)',
+            display: 'block',
           }}
         />
       </div>
 
-      {/* Gradient blends */}
+      {/* Gradient blends for text readability */}
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to right, rgba(130,0,5,0.9) 0%, transparent 32%)' }} />
+        style={{ background: 'linear-gradient(to right, rgba(100,0,3,0.95) 0%, rgba(80,0,3,0.6) 38%, rgba(40,0,0,0.1) 60%, transparent 70%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to left, rgba(80,0,0,0.85) 0%, transparent 34%)' }} />
+        style={{ background: 'linear-gradient(to left, rgba(60,0,0,0.92) 0%, rgba(40,0,0,0.5) 32%, transparent 55%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.5) 0%, transparent 20%)' }} />
+        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.8) 0%, transparent 35%)' }} />
+      <div className="absolute inset-0 z-[6] pointer-events-none"
+        style={{ background: 'linear-gradient(to bottom, rgba(8,0,0,0.5) 0%, transparent 25%)' }} />
 
       {/* ── 3-column content grid ── */}
       <div
