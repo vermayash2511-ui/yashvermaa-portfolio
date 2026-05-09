@@ -7,6 +7,19 @@ const categories = ['All', 'Branding', 'Editorial', 'Packaging', 'Illustration']
 
 // Gallery definitions
 const galleries: Record<string, { src: string; alt: string }[]> = {
+  oceanpearl: [
+    { src: '/assets/images/villa1.jpg', alt: 'Ocean Pearl - Brand Cover' },
+    { src: '/assets/images/villa2.jpg', alt: 'Ocean Pearl - Design Objectives' },
+    { src: '/assets/images/villa3.jpg', alt: 'Ocean Pearl - Brand Overview' },
+    { src: '/assets/images/villa4.jpg', alt: 'Ocean Pearl - Color Palette' },
+    { src: '/assets/images/villa5.jpg', alt: 'Ocean Pearl - Door Hanger Mockup' },
+    { src: '/assets/images/villa6.jpg', alt: 'Ocean Pearl - Amenities Mockup' },
+    { src: '/assets/images/villa7.jpg', alt: 'Ocean Pearl - Villa Pool View' },
+    { src: '/assets/images/villa8.jpg', alt: 'Ocean Pearl - Lifestyle Imagery' },
+    { src: '/assets/images/villa9.jpg', alt: 'Ocean Pearl - Villa Collage' },
+    { src: '/assets/images/villa10.jpg', alt: 'Ocean Pearl - Stationery Mockup' },
+    { src: '/assets/images/villa11.jpg', alt: 'Ocean Pearl - Experience' },
+  ],
   audora: [
     { src: '/assets/images/audora_1.jpg', alt: 'Audora Brand Identity - Cover' },
     { src: '/assets/images/audora_2.jpg', alt: 'Audora Design Objectives' },
@@ -54,6 +67,19 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: -1,
+    title: 'Ocean Pearl Brand Identity',
+    category: 'Branding',
+    tags: ['Brand Identity', 'Luxury Resort', 'Visual System'],
+    year: '2026',
+    imgSrc: '/assets/images/villa1.jpg',
+    imgAlt: 'Ocean Pearl - Luxury Villa Brand Identity',
+    colSpan: 'md:col-span-1',
+    aspectClass: 'aspect-[4/5]',
+    galleryKey: 'oceanpearl',
+    imageCount: 11,
+  },
   {
     id: 0,
     title: 'Audora Brand Identity',
