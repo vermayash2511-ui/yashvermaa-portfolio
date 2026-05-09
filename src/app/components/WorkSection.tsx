@@ -7,6 +7,18 @@ const categories = ['All', 'Branding', 'Editorial', 'Packaging', 'Illustration']
 
 // Gallery definitions
 const galleries: Record<string, { src: string; alt: string }[]> = {
+  audora: [
+    { src: '/assets/images/audora_1.jpg', alt: 'Audora Brand Identity - Cover' },
+    { src: '/assets/images/audora_2.jpg', alt: 'Audora Design Objectives' },
+    { src: '/assets/images/audora_3.jpg', alt: 'Audora Logo on Leather' },
+    { src: '/assets/images/audora_4.jpg', alt: 'Audora Moodboard' },
+    { src: '/assets/images/audora_5.jpg', alt: 'Audora Pattern' },
+    { src: '/assets/images/audora_6.jpg', alt: 'Audora Logo Variations' },
+    { src: '/assets/images/audora_7.jpg', alt: 'Audora Color Palette' },
+    { src: '/assets/images/audora_8.jpg', alt: 'Audora Speaker Products' },
+    { src: '/assets/images/audora_9.jpg', alt: 'Audora Product Design' },
+    { src: '/assets/images/audora_10.jpg', alt: 'Audora Logo Mockup' },
+  ],
   amul: [
     { src: '/assets/images/amul_1.jpg', alt: 'Amul Campaign - Things Are Starting To Melt' },
     { src: '/assets/images/amul_2.jpg', alt: 'Amul Campaign - Some Flavours Don\'t Come Home' },
@@ -42,6 +54,19 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: 0,
+    title: 'Audora Brand Identity',
+    category: 'Branding',
+    tags: ['Brand Identity', 'Logo Design', 'Luxury'],
+    year: '2026',
+    imgSrc: '/assets/images/audora_1.jpg',
+    imgAlt: 'Audora Brand Identity - Hear The Atmos',
+    colSpan: 'md:col-span-1',
+    aspectClass: 'aspect-[4/5]',
+    galleryKey: 'audora',
+    imageCount: 10,
+  },
   {
     id: 1,
     title: 'Amul Ice Cream Campaign',
