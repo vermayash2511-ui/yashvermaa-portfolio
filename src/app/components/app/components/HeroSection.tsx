@@ -28,27 +28,23 @@ export default function HeroSection() {
         background: 'radial-gradient(ellipse 120% 120% at 55% 35%, #e8000a 0%, #9b0000 42%, #2a0000 75%, #080000 100%)',
       }}
     >
-      {/* ── Person photo ── */}
-      <div className="absolute inset-0 z-[5] flex items-end justify-center">
+      {/* ── Full background photo ── */}
+      <div className="absolute inset-0 z-[5]">
         <img
           src="/assets/images/yash_hero.jpg"
           alt="Yash Verma"
-          className="h-[95%] w-auto object-contain object-bottom select-none pointer-events-none"
-          style={{
-            maxWidth: '55%',
-            mixBlendMode: 'multiply',
-            filter: 'contrast(1.08) brightness(0.85)',
-          }}
+          className="w-full h-full object-cover object-center select-none pointer-events-none"
+          style={{ filter: 'brightness(0.9) contrast(1.05)' }}
         />
       </div>
 
-      {/* Gradient blends */}
+      {/* Gradient blends for text readability */}
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to right, rgba(130,0,5,0.9) 0%, transparent 32%)' }} />
+        style={{ background: 'linear-gradient(to right, rgba(100,0,3,0.92) 0%, rgba(80,0,3,0.5) 40%, transparent 65%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to left, rgba(80,0,0,0.85) 0%, transparent 34%)' }} />
+        style={{ background: 'linear-gradient(to left, rgba(60,0,0,0.88) 0%, rgba(40,0,0,0.4) 35%, transparent 60%)' }} />
       <div className="absolute inset-0 z-[6] pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.5) 0%, transparent 20%)' }} />
+        style={{ background: 'linear-gradient(to top, rgba(8,0,0,0.7) 0%, transparent 30%)' }} />
 
       {/* ── 3-column content grid ── */}
       <div
