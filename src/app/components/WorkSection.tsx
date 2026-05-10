@@ -7,6 +7,16 @@ const categories = ['All', 'Branding', 'Editorial', 'Packaging', 'Illustration']
 
 // Gallery definitions
 const galleries: Record<string, { src: string; alt: string }[]> = {
+  oxfam: [
+    { src: '/assets/images/oxfam_1.jpg', alt: 'Oxfam Campaign - Cover' },
+    { src: '/assets/images/oxfam_2.jpg', alt: 'Oxfam - NGO Overview' },
+    { src: '/assets/images/oxfam_3.jpg', alt: 'Oxfam - Logo Design' },
+    { src: '/assets/images/oxfam_4.jpg', alt: 'Oxfam - If You Cannot Reduce' },
+    { src: '/assets/images/oxfam_5.jpg', alt: 'Oxfam - Artist Who Turned Waste' },
+    { src: '/assets/images/oxfam_6.jpg', alt: 'Oxfam - Art Installations' },
+    { src: '/assets/images/oxfam_7.jpg', alt: 'Oxfam - We Can Stop It' },
+    { src: '/assets/images/oxfam_8.jpg', alt: 'Oxfam - Farmer Who Shared Water' },
+  ],
   oceanpearl: [
     { src: '/assets/images/villa1.jpg', alt: 'Ocean Pearl - Brand Cover' },
     { src: '/assets/images/villa2.jpg', alt: 'Ocean Pearl - Design Objectives' },
@@ -67,6 +77,19 @@ interface Project {
 }
 
 const projects: Project[] = [
+  {
+    id: -2,
+    title: 'Oxfam NGO Campaign',
+    category: 'Branding',
+    tags: ['NGO Campaign', 'Social Design', 'Visual Communication'],
+    year: '2026',
+    imgSrc: '/assets/images/oxfam_1.jpg',
+    imgAlt: 'Oxfam NGO Campaign Design',
+    colSpan: 'md:col-span-1',
+    aspectClass: 'aspect-[4/5]',
+    galleryKey: 'oxfam',
+    imageCount: 8,
+  },
   {
     id: -1,
     title: 'Ocean Pearl Brand Identity',
