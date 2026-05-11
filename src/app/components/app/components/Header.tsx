@@ -40,13 +40,13 @@ export default function Header() {
             aria-label="Back to top"
             suppressHydrationWarning
           >
-            <img
-                src="/assets/images/logo.svg"
-                alt="Logo"
-                width={38}
-                height={38}
-                style={{ width: 38, height: 38, borderRadius: '50%' }}
-              />
+            <div style={{ width: 38, height: 38, borderRadius: '50%', overflow: 'hidden', flexShrink: 0 }}>
+                <img
+                  src="/assets/images/logo.svg"
+                  alt="Logo"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </div>
             <span className={`font-display text-lg font-bold tracking-tight hidden sm:block transition-colors ${scrolled ? 'text-foreground' : 'text-white drop-shadow-lg'}`}>
               Yash Verma
             </span>
