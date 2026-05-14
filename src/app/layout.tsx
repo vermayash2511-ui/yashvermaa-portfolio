@@ -34,6 +34,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${dmSans.variable} ${fraunces.variable}`}>
+      <head>
+        <meta name="p:domain_verify" content="2b70a0b2fe5d9b1b3866c4d5475a2823" />
+      </head>
       <body className={dmSans.className}>
         {children}
 </body>
