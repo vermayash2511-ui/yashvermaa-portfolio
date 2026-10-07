@@ -5,7 +5,7 @@
 :root {
   --background: #0A0A08;
   --foreground: #F5F0E8;
-  --primary: #ed1c24;
+  --primary: #E8572A;
   --primary-foreground: #FFFFFF;
   --secondary: #1A1A17;
   --secondary-foreground: #F5F0E8;
@@ -17,7 +17,7 @@
   --card-foreground: #F5F0E8;
   --border: #2A2A26;
   --input: #1A1A17;
-  --ring: #ed1c24;
+  --ring: #E8572A;
   --radius: 0.75rem;
   --font-sans: var(--font-dm-sans), sans-serif;
   --font-display: var(--font-fraunces), serif;
@@ -67,7 +67,7 @@
 
 @layer utilities {
   .text-gradient-coral {
-    background: linear-gradient(135deg, #ed1c24 0%, #ff6b6b 60%, #ed1c24 100%);
+    background: linear-gradient(135deg, #E8572A 0%, #F5C842 60%, #E8572A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -227,7 +227,7 @@
 
 .form-input:focus {
   outline: none;
-  border-color: #ed1c24;
+  border-color: #E8572A;
   box-shadow: 0 0 0 3px rgba(232, 87, 42, 0.15);
   background: #1A1A17;
 }
@@ -258,9 +258,9 @@
 }
 
 .filter-tab.active {
-  background: #ed1c24;
+  background: #E8572A;
   color: #FFFFFF;
-  border-color: #ed1c24;
+  border-color: #E8572A;
 }
 
 /* ── Line draw ── */
@@ -295,4 +295,70 @@
 #mobile-nav.open {
   max-height: 400px;
   opacity: 1;
+}
+/* ── FIX #1: Consolidated type scale (max 9 sizes) ── */
+:root {
+  --text-xs:   12px;   /* labels, captions */
+  --text-sm:   14px;   /* body small */
+  --text-base: 16px;   /* body */
+  --text-lg:   18px;   /* lead text */
+  --text-xl:   20px;   /* subheadings */
+  --text-2xl:  24px;   /* section sub */
+  --text-3xl:  32px;   /* section headings */
+  --text-4xl:  48px;   /* page headings */
+  --text-hero: clamp(60px, 8vw, 100px); /* hero only */
+}
+
+/* ── FIX #2 & #8: Unified button system (2 variants only) ── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background-color: color-mix(in srgb, var(--primary) 88%, black);
+}
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: transparent;
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 25px;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(255,255,255,0.35);
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background-color: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.6);
+}
+
+/* Filter pills stay as a separate utility — not a button variant */
+.filter-tab.active {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
 }
