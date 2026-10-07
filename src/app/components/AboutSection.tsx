@@ -184,11 +184,9 @@ export default function AboutSection() {
                 <Icon name="ArrowRightIcon" size={16} variant="outline" />
               </a>
               <a
-                href="/assets/Yash_Verma_CV.pdf"
-                download="Yash_Verma_CV.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
                 className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                
                 <Icon name="ArrowDownTrayIcon" size={16} variant="outline" />
                 Download CV
               </a>
