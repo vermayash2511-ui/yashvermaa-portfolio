@@ -189,6 +189,7 @@ export default function AboutSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors group">
+                
                 <Icon name="ArrowDownTrayIcon" size={16} variant="outline" />
                 Download CV
               </a>
